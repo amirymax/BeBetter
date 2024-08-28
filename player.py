@@ -7,3 +7,7 @@ class Player:
         
     def set_name(self, name):
         self.name = name
+
+    def set_category(self, category):
+        self.category = category
+        
