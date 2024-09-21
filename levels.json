@@ -345,7 +345,32 @@
     },
     "task2": {
       "name": "Прочитать 20 страниц книги",
-      "books": {}
+      "books": {
+        "IT": {
+          "title": "Код. Тайный язык информатики - Чарльз Петцольд",
+          "link": "https://drive.google.com/file/d/1y9v_feGR4yYbkiEO9NACAtgPpAnJFQKn/view?usp=sharing"
+        },
+        "Наука": {
+          "title": "О вселенной в двух словах - Стивен_Хокинг",
+          "link": "https://drive.google.com/file/d/1dwJ0G3mK5ObMTY1zP0K9S1JJhEiWUR62/view?usp=sharing"
+        },
+        "Искусство": {
+          "title": "Краткая История Искусств - Нина Дмитриева",
+          "link": "https://drive.google.com/file/d/1zC__Sddg_LcDOmLVCanBxcHxsQv4yPRX/view?usp=sharing"
+        },
+        "Медицина": {
+          "title": "Медицинская физиология по Гайтону и Холлу",
+          "link": "https://drive.google.com/file/d/1VB6B7o7F96uyGZVB9xMNg7Oc1AV7Qeq6/view?usp=sharing"
+        },
+        "Спорт": {
+          "title": "Пока Книга не определена",
+          "link": "https://drive.google.com/file/d/1RihMcorUQSK35o2OCWL7T3Wvt7Ebd2yk/view?usp=sharing"
+        },
+        "Бизнес": {
+          "title": "Богатый Папа, Бедный Папа - Роберт Кийосаки",
+          "link": "https://drive.google.com/file/d/1RihMcorUQSK35o2OCWL7T3Wvt7Ebd2yk/view?usp=sharing"
+        }
+      }
     }
   }
 }

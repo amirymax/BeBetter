@@ -162,8 +162,23 @@ async def process_answer(call: types.CallbackQuery):
         await send_question(user_id, category, player.question_number)
     else:
         if player.correct_answers >= 4:
-            await bot.send_message(user_id, "Поздравляем! Вы прошли тест. Переходим к следующему этапу.")
+            # await bot.send_message(user_id, "Поздравляем! Вы прошли тест.")
             # Здесь будет логика для следующего этапа
+            book = level1['task2']['books'][category]
+            book_title = book['title']
+            book_link = book['link']
+
+            # Формируем сообщение с гиперссылкой на книгу
+            book_message = f"*Поздравляем! Ты прошел тест.*\n\nТеперь ты переходишь ко второму этапу! Для этого прочитай книгу: [{book_title}]({book_link}).\n\nПрочитай первые 20 страниц (предисловие не считается). Как только ты будешь готов, нажми на кнопку внизу, чтобы пройти тест по прочитанному материалу."
+
+            # Кнопка для перехода к вопросам после прочтения
+            keyboard = ReplyKeyboardMarkup(
+                [[KeyboardButton('Прочитал. Готов к вопросам')]], resize_keyboard=True, one_time_keyboard=True)
+            
+            await bot.send_message(user_id, book_message, parse_mode="markdown", reply_markup=keyboard)
+
+            # Устанавливаем новое состояние
+            player.state = 'awaiting_book_questions'
         else:
             article = level1['task1']['articles'][player.category]
             await bot.send_message(user_id, f"К сожалению, вы ответили правильно на {player.correct_answers}/5 вопросов. Прочитайте статью еще раз.")
