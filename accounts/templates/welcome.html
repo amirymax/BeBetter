@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Добро пожаловать в BeBetter{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <div class="mt-5">
+        <h1 class="mb-3">Добро пожаловать в BeBetter!</h1>
+        <p>Ваш путь к совершенству начинается здесь.</p>
+        <img src="https://via.placeholder.com/600x300" alt="BeBetter Welcome" class="img-fluid my-4">
+
+        <div>
+            <a href="/login/" class="btn btn-primary btn-lg mx-2">Войти</a>
+            <a href="/register/" class="btn btn-outline-primary btn-lg mx-2">Регистрация</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
