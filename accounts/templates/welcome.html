@@ -1,14 +1,31 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Добро пожаловать в BeBetter{% endblock %}
 
 {% block content %}
-<div class="container text-center">
-    <div class="mt-5">
-        <h1 class="mb-3">Добро пожаловать в BeBetter!</h1>
-        <p>Ваш путь к совершенству начинается здесь.</p>
-        <img src="https://via.placeholder.com/600x300" alt="BeBetter Welcome" class="img-fluid my-4">
+<div class="container d-flex align-items-center justify-content-between" style="min-height: 80vh;">
+    <!-- Левая часть: Слайды -->
+    <div class="w-50 text-center">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 250px; margin: 0 auto;">
+            <div class="carousel-inner iphone-frame">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/main_mobile.jpg' %}" class="d-block w-100" alt="Главная страница">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/ranking_mobile.jpg' %}" class="d-block w-100" alt="Рейтинг">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'images/contact_mobile.jpg' %}" class="d-block w-100" alt="Контакты">
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Правая часть: Приветствие -->
+    <div class="w-50 text-center">
+        <h1 class="mb-4">Добро пожаловать в BeBetter!</h1>
+        <p class="mb-4">Ваш путь к совершенству начинается здесь.</p>
         <div>
             <a href="/login/" class="btn btn-primary btn-lg mx-2">Войти</a>
             <a href="/register/" class="btn btn-outline-primary btn-lg mx-2">Регистрация</a>

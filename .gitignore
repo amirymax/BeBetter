@@ -1,1 +1,15 @@
 env/
+# Python-specific
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# Environment files
+.env
+*.env
+
+# Django-specific
+db.sqlite3
+/media/

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Регистрация - BeBetter{% endblock %}
+{% block title %}Редактирование профиля - BeBetter{% endblock %}
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
     <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px; border-radius: 25px;">
@@ -10,7 +10,7 @@
             <img src="{% static 'images/logo.jpg' %}" alt="BeBetter Logo" class="mb-4" style="width: 120px;">
         </div>
         <!-- Заголовок -->
-        <h2 class="text-center mb-4" style="font-family: 'Cursive', sans-serif; font-weight: bold;">Регистрация</h2>
+        <h2 class="text-center mb-4" style="font-family: 'Cursive', sans-serif; font-weight: bold;">Редактирование профиля</h2>
         
         <!-- Сообщения об ошибках -->
         {% if messages %}
@@ -21,7 +21,7 @@
             </div>
         {% endif %}
         
-        <!-- Форма регистрации -->
+        <!-- Форма редактирования -->
         <form method="post" action="">
             {% csrf_token %}
             <div class="mb-3">
@@ -30,6 +30,7 @@
                     name="first_name"
                     class="form-control"
                     placeholder="Имя и фамилия"
+                    value="{{ user.first_name }}"
                     style="background-color: #f8f9fa; border-radius: 15px;"
                     required
                 >
@@ -40,6 +41,7 @@
                     name="username"
                     class="form-control"
                     placeholder="Имя пользователя"
+                    value="{{ user.username }}"
                     style="background-color: #f8f9fa; border-radius: 15px;"
                     required
                 >
@@ -49,6 +51,7 @@
                     type="date"
                     name="birth_date"
                     class="form-control"
+                    value="{{ user_profile.birth_date }}"
                     style="background-color: #f8f9fa; border-radius: 15px;"
                     required
                 >
@@ -60,45 +63,22 @@
                     style="background-color: #f8f9fa; border-radius: 15px;"
                     required
                 >
-                    <option value="science">Наука</option>
-                    <option value="art">Искусство</option>
-                    <option value="health">Медицина</option>
-                    <option value="sport">Спорт</option>
-                    <option value="it">IT</option>
-                    <option value="business">Бизнес</option>
+                    <option value="science" {% if user_profile.category == 'science' %}selected{% endif %}>Наука</option>
+                    <option value="art" {% if user_profile.category == 'art' %}selected{% endif %}>Искусство</option>
+                    <option value="health" {% if user_profile.category == 'health' %}selected{% endif %}>Медицина</option>
+                    <option value="sport" {% if user_profile.category == 'sport' %}selected{% endif %}>Спорт</option>
+                    <option value="it" {% if user_profile.category == 'it' %}selected{% endif %}>IT</option>
+                    <option value="business" {% if user_profile.category == 'business' %}selected{% endif %}>Бизнес</option>
                 </select>
-            </div>
-            <div class="mb-3">
-                <input
-                    type="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Пароль"
-                    style="background-color: #f8f9fa; border-radius: 15px;"
-                    required
-                >
-            </div>
-            <div class="mb-3">
-                <input
-                    type="password"
-                    name="confirm_password"
-                    class="form-control"
-                    placeholder="Подтвердите пароль"
-                    style="background-color: #f8f9fa; border-radius: 15px;"
-                    required
-                >
             </div>
             <button
                 type="submit"
                 class="btn btn-primary w-100"
                 style="border-radius: 15px; font-weight: bold; background-color: #2c3e50; border: none;"
             >
-                Зарегистрироваться
+                Сохранить изменения
             </button>
         </form>
-        <div class="text-center mt-3">
-            <p>Уже есть аккаунт? <a href="/login/">Войти</a></p>
-        </div>
     </div>
 </div>
 {% endblock %}

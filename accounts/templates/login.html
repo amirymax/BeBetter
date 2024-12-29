@@ -1,10 +1,14 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block title %}Вход - BeBetter{% endblock %}
 
 {% block content %}
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
     <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+        <!-- Логотип -->
+        <div class="text-center">
+            <img src="{% static 'images/logo.jpg' %}" alt="BeBetter Logo" class="mb-4" style="width: 120px;">
+        </div>
         <h1 class="text-center mb-4">Вход</h1>
         {% if messages %}
             <div class="alert alert-danger" role="alert">
