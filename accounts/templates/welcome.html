@@ -4,10 +4,10 @@
 {% block title %}Добро пожаловать в BeBetter{% endblock %}
 
 {% block content %}
-<div class="container d-flex align-items-center justify-content-between" style="min-height: 80vh;">
+<div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between" style="min-height: 80vh;">
     <!-- Левая часть: Слайды -->
-    <div class="w-50 text-center">
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 250px; margin: 0 auto;">
+    <div class="w-100 w-lg-50 text-center mb-4 mb-lg-0">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 200px; margin: 0 auto;">
             <div class="carousel-inner iphone-frame">
                 <div class="carousel-item active">
                     <img src="{% static 'images/main_mobile.jpg' %}" class="d-block w-100" alt="Главная страница">
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Правая часть: Приветствие -->
-    <div class="w-50 text-center">
+    <div class="w-100 w-lg-50 text-center">
         <h1 class="mb-4">Добро пожаловать в BeBetter!</h1>
         <p class="mb-4">Ваш путь к совершенству начинается здесь.</p>
         <div>

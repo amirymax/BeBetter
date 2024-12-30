@@ -3,55 +3,32 @@
 {% block title %}Главная - BeBetter{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <!-- Информация о пользователе -->
-    <div class="text-center mb-5">
-        <h2>Привет, <strong>{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</strong></h2>
-        <h5>Текущий уровень: {{ user.userprofile.level }}</h5>
-    </div>
-
-    <!-- Текущий этап -->
-    <div class="row mb-5">
-        <div class="col-md-6 offset-md-3">
-            <div class="card shadow">
-                <div class="card-header bg-dark text-white text-center">
-                    <h4>Текущий этап</h4>
+<div class="container mt-5 d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between">
+    <!-- Левая часть: Скриншоты -->
+    <div class="w-100 w-lg-50 text-center mt-4 mt-lg-0 order-lg-2">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 200px; margin: 0 auto;">
+            <div class="carousel-inner iphone-frame">
+                <div class="carousel-item active">
+                    <img src="{% static 'images/main_mobile.jpg' %}" class="d-block w-100" alt="Главная страница">
                 </div>
-                <div class="card-body d-flex justify-content-between align-items-center">
-                    <p class="mb-0"><strong>{{ current_task }}</strong></p>
-                    <a href="#" class="btn btn-primary">Сделал</a>
+                <div class="carousel-item">
+                    <img src="{% static 'images/ranking_mobile.jpg' %}" class="d-block w-100" alt="Рейтинг">
                 </div>
-                {% if resource_link %}
-                    <a href="{{ resource_link }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Подбронее</a>
-                {% endif %}
-
+                <div class="carousel-item">
+                    <img src="{% static 'images/contact_mobile.jpg' %}" class="d-block w-100" alt="Контакты">
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Предыдущие этапы -->
-    <div class="table-responsive">
-        <table class="table table-bordered text-center">
-            <thead class="bg-dark text-white">
-                <tr>
-                    <th>Предыдущие этапы</th>
-                    <th>Уровень</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for stage in previous_stages %}
-                <tr>
-                    <td>{{ stage.task }}</td>
-                    <td>Уровень {{ stage.level }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-    <div class="text-center mt-5">
-        <a href="{% url 'update_user' %}" class="btn btn-primary">Редактировать аккаунт</a>
+    <!-- Правая часть: Приветствие -->
+    <div class="w-100 w-lg-50 text-center order-lg-1">
+        <h1 class="mb-4">Добро пожаловать в BeBetter!</h1>
+        <p class="mb-4">Ваш путь к совершенству начинается здесь.</p>
+        <div>
+            <a href="/login/" class="btn btn-primary btn-lg mx-2">Войти</a>
+            <a href="/register/" class="btn btn-outline-primary btn-lg mx-2">Регистрация</a>
+        </div>
     </div>
 </div>
 {% endblock %}
-
-
