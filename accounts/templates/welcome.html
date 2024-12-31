@@ -1,12 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block title %}Добро пожаловать в BeBetter{% endblock %}
+{% block title %}Главная - BeBetter{% endblock %}
 
 {% block content %}
-<div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between" style="min-height: 80vh;">
-    <!-- Левая часть: Слайды -->
-    <div class="w-100 w-lg-50 text-center mb-4 mb-lg-0">
+<div class="container mt-5 d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between">
+    <!-- Левая часть: Скриншоты -->
+    <div class="w-100 w-lg-50 text-center mt-4 mt-lg-0 order-lg-2">
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 200px; margin: 0 auto;">
             <div class="carousel-inner iphone-frame">
                 <div class="carousel-item active">
@@ -23,7 +22,7 @@
     </div>
 
     <!-- Правая часть: Приветствие -->
-    <div class="w-100 w-lg-50 text-center">
+    <div class="w-100 w-lg-50 text-center order-lg-1">
         <h1 class="mb-4">Добро пожаловать в BeBetter!</h1>
         <p class="mb-4">Ваш путь к совершенству начинается здесь.</p>
         <div>
