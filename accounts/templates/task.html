@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Задание - BeBetter{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Информация о задании -->
+    <div class="card shadow p-4">
+        <div class="card-header bg-dark text-white text-center">
+            <h4>Уровень {{ user.userprofile.level }}.{{ current_task.task_number}}</h4> 
+            <h3>{{ current_task.task_name }}</h3>
+        </div>
+        <div class="card-body">
+            <!-- Описание задания -->
+            <h5 class="mb-4 text-secondary" style="font-weight: bold;">Описание задания:</h5>
+            <div class="p-4 rounded bg-light shadow-sm" style="border-left: 5px solid #007bff;">
+                <p style="font-size: 1.1rem; line-height: 1.6; text-align: justify;">
+                    {{ current_task.description|safe }}
+                </p>
+            </div>
+
+            
+
+            <!-- Цитата -->
+            {% if current_task.quote %}
+            <blockquote class="my-4 text-center blockquote">
+                <p class="mb-0"><i>{{ current_task.quote }}</i></p>
+                {% if current_task.quote_author %}
+                <footer class="blockquote-footer mt-2">{{ current_task.quote_author }}</footer>
+                {% endif %}
+            </blockquote>
+            {% endif %}
+
+            <!-- Ссылка на ресурс -->
+            
+            {% if current_task.resource_link %}
+            <div class="my-4 text-center">
+                <a href="{{ current_task.resource_link }}" class="btn btn-primary btn-lg" target="_blank">
+                    Перейти к ресурсу
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

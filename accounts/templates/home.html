@@ -6,8 +6,9 @@
 <div class="container mt-5">
     <!-- Информация о пользователе -->
     <div class="text-center mb-5">
-        <h2>Привет, <strong>{% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}</strong></h2>
-        <h5>Текущий уровень: {{ user.userprofile.level }}</h5>
+        <h2>Привет, <strong>{{ user.first_name }}</strong></h2>
+        <h5>Твой уровень: {{ user.userprofile.level }}</h5>
+        <h5>Текущее задание: №{{ user_profile.current_task_number }}</h5>
     </div>
 
     <!-- Текущий этап -->
@@ -18,13 +19,10 @@
                     <h4>Текущий этап</h4>
                 </div>
                 <div class="card-body d-flex justify-content-between align-items-center">
-                    <p class="mb-0"><strong>{{ current_task }}</strong></p>
-                    <a href="#" class="btn btn-primary">Сделал</a>
+                    <p class="mb-0"><strong>{{ current_task.task_name }}</strong></p>
+                    <a href="{% url 'task' %}" class="btn btn-primary">Сделал</a>
                 </div>
-                {% if resource_link %}
-                    <a href="{{ resource_link }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Подбронее</a>
-                {% endif %}
-
+                <a href="{% url 'task' %}" class="btn btn-secondary">Подробнее</a>
             </div>
         </div>
     </div>
@@ -53,4 +51,3 @@
     </div>
 </div>
 {% endblock %}
-

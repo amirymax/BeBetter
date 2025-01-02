@@ -20,7 +20,6 @@
                 {% endfor %}
             </div>
         {% endif %}
-        
         <!-- Форма редактирования -->
         <form method="post" action="">
             {% csrf_token %}
@@ -61,7 +60,7 @@
                     name="category"
                     class="form-select"
                     style="background-color: #f8f9fa; border-radius: 15px;"
-                    required
+                    disabled
                 >
                     <option value="science" {% if user_profile.category == 'science' %}selected{% endif %}>Наука</option>
                     <option value="art" {% if user_profile.category == 'art' %}selected{% endif %}>Искусство</option>

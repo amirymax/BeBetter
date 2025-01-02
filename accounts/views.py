@@ -1,33 +1,38 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from .models import  UserProfile, Task, CompletedTask
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
+CATEGORIES = {
+        'science': 'Наука',
+        'art': 'Искусство',
+        'health': 'Медицина',
+        'sport': 'Спорт',
+        'it': 'IT',
+        'business': 'Бизнес'
+}
 
 def home(request):
     if request.user.is_authenticated:
         # Пользователь вошел в систему
         user_profile = UserProfile.objects.get(user=request.user)
-    
-        # Получаем текущую задачу
-        current_task = Task.objects.filter(level=user_profile.level).first()
-        resource_link = current_task.resource_link if current_task and current_task.resource_link else None
-        # Получаем список предыдущих выполненных задач
-        previous_tasks = CompletedTask.objects.filter(user=request.user).order_by('-level')
-
+        current_task = Task.objects.filter(
+            level__number=user_profile.level,  # Уровень пользователя
+            task_number=user_profile.current_task_number,  # Номер текущего задания
+            category__name=CATEGORIES[user_profile.category]  # Категория пользователя
+        ).first()
         context = {
-            'user_profile': user_profile,
-            'current_task': current_task,
-            'previous_tasks': previous_tasks,
-            'resource_link': resource_link
+            "user_profile": user_profile,
+            "current_task": current_task,  # Передаём задание в шаблон
         }
         return render(request, "home.html", context)
+
     else:
         # Пользователь не вошел
         return render(request, "welcome.html")
-
 
 def register(request):
     if request.method == "POST":
@@ -55,6 +60,7 @@ def register(request):
         # Создаем профиль пользователя
         UserProfile.objects.create(
             user=user,
+            birth_date=birth_date,  # Сохраняем дату рождения
             category=category,
         )
         login(request, user)
@@ -62,17 +68,20 @@ def register(request):
     return render(request, "register.html")
 
 def login_view(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('home')
-        else:
-            return render(request, 'login.html', {'error': 'Invalid credentials'})
-    return render(request, 'login.html')
-
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home')
+            else:
+                messages.error(request, 'Имя пользователя или пароль неверны.')
+                return render(request, 'login.html')
+        return render(request, 'login.html')
+    else:
+        return redirect('home')
 def logout_view(request):
     # if request.method == 'POST':
     #     if request.POST.get('confirm') == 'yes':
@@ -119,9 +128,13 @@ def rankings(request):
 
 @login_required
 def update_user(request):
+
     # Проверяем, существует ли профиль для текущего пользователя
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-    
+    if user_profile.birth_date:
+        # Преобразуем дату в строку формата YYYY-MM-DD для отображения в форме
+        user_profile.birth_date = user_profile.birth_date.strftime("%Y-%m-%d")
+
     if request.method == "POST":
         first_name = request.POST.get("first_name")
         username = request.POST.get("username")
@@ -138,7 +151,11 @@ def update_user(request):
             request.user.save()
 
             # Обновление данных профиля
-            user_profile.birth_date = birth_date
+            print(
+                'birth_date', user_profile.birth_date,
+            )
+            # user_profile.birth_date = birth_date
+            user_profile.birth_date = datetime.strptime(birth_date, "%Y-%m-%d").date()
             user_profile.category = category
             user_profile.save()
 
@@ -149,3 +166,23 @@ def update_user(request):
         "user_profile": user_profile,
     }
     return render(request, "update_user.html", context)
+
+@login_required
+def task_view(request):
+    if request.user.is_authenticated:
+        user_profile = request.user.userprofile
+        current_task = Task.objects.filter(
+                level__number=user_profile.level,  # Уровень пользователя
+                task_number=user_profile.current_task_number,  # Номер текущего задания
+                category__name=CATEGORIES[user_profile.category]  # Категория пользователя
+        ).first()
+        
+        context = {
+                "user_profile": user_profile,
+                "current_task": current_task,  # Передаём задание в шаблон
+        }
+        return render(request, "task.html", context)
+
+    else:
+        # Пользователь не вошел
+        return render(request, "welcome.html")
