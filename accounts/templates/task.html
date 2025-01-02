@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}Задание - BeBetter{% endblock %}
-
+<!-- connect static styles -->
 {% block content %}
 <div class="container mt-5">
     <!-- Информация о задании -->
@@ -13,7 +13,7 @@
         <div class="card-body">
             <!-- Описание задания -->
             <h5 class="mb-4 text-secondary" style="font-weight: bold;">Описание задания:</h5>
-            <div class="p-4 rounded bg-light shadow-sm" style="border-left: 5px solid #007bff;">
+            <div class="p-4 rounded bg-light shadow-sm description-box" style="border-left: 5px solid #007bff;">
                 <p style="font-size: 1.1rem; line-height: 1.6; text-align: justify;">
                     {{ current_task.description|safe }}
                 </p>

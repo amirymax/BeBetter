@@ -13,4 +13,21 @@
         max-width: 100%;
         height: auto;
     }
+
+    .description-box {
+        width: 120%; /* Ширина будет 90% от ширины экрана */
+        margin-left: -30px; /* Центрирует блок */
+        padding: 0px;
+    }
+
+    .description-box p {
+        font-size: 1rem; /* Уменьшает размер шрифта на мобильных устройствах для удобства */
+        line-height: 1.8; /* Увеличивает межстрочный интервал */
+    }
+    .container {
+        width: 105%;
+        margin-left: -10px;
+    }
 }
+
+
