@@ -3,12 +3,15 @@
 {% block title %}Главная - BeBetter{% endblock %}
 
 {% block content %}
+<!-- <div class="col-md-12 offset-md-10">
+    <a href="{% url 'update_user' %}" class="btn btn-primary">Редактировать аккаунт</a>
+</div> -->
+
 <div class="container mt-5">
     <!-- Информация о пользователе -->
     <div class="text-center mb-5">
         <h2>Привет, <strong>{{ user.first_name }}</strong></h2>
         <h5>Твой уровень: {{ user.userprofile.level }}</h5>
-        <h5>Текущее задание: №{{ user_profile.current_task_number }}</h5>
     </div>
 
     <!-- Текущий этап -->
@@ -16,7 +19,7 @@
         <div class="col-md-6 offset-md-3">
             <div class="card shadow">
                 <div class="card-header bg-dark text-white text-center">
-                    <h4>Текущий этап</h4>
+                    <h4>Твое задание: №{{ user_profile.current_task_number }}</h4>
                 </div>
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <p class="mb-0"><strong>{{ current_task.task_name }}</strong></p>
@@ -37,6 +40,12 @@
                 </tr>
             </thead>
             <tbody>
+                {% if not previous_stages %}
+                    <tr>
+                        <td colspan="2">Нет предыдущих этапов</td>
+                    </tr>
+                {% endif %}
+
                 {% for stage in previous_stages %}
                 <tr>
                     <td>{{ stage.task }}</td>
@@ -46,8 +55,6 @@
             </tbody>
         </table>
     </div>
-    <div class="text-center mt-5">
-        <a href="{% url 'update_user' %}" class="btn btn-primary">Редактировать аккаунт</a>
-    </div>
+    
 </div>
 {% endblock %}

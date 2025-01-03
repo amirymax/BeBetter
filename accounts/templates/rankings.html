@@ -25,7 +25,7 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ player.user.username }}</td>
-                    <td>{{ player.level }}</td>
+                    <td>{{ player.level }}.{{ player.current_task_number }}</td>
                     <td>{{ player.completed_tasks }}</td>
                 </tr>
                 {% endfor %}

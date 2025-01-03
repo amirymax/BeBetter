@@ -112,7 +112,8 @@ def rankings(request):
     paginator = Paginator(players, 50)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-
+    # player = players[0]
+    # print(player.current_task_number)
     # Если пользователь вошел в систему, определяем его место
     user_rank = None
     if request.user.is_authenticated:
