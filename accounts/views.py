@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
+from django.contrib.auth.hashers import make_password
 CATEGORIES = {
         'science': 'Наука',
         'art': 'Искусство',
@@ -129,39 +130,48 @@ def rankings(request):
 
 @login_required
 def update_user(request):
-
     # Проверяем, существует ли профиль для текущего пользователя
     user_profile, created = UserProfile.objects.get_or_create(user=request.user)
-    if user_profile.birth_date:
-        # Преобразуем дату в строку формата YYYY-MM-DD для отображения в форме
-        user_profile.birth_date = user_profile.birth_date.strftime("%Y-%m-%d")
 
+    # Преобразуем дату рождения в строку формата YYYY-MM-DD для отображения в форме
+    if user_profile.birth_date:
+        user_profile.birth_date = user_profile.birth_date.strftime("%Y-%m-%d")
+    context = {
+        "user_profile": user_profile,
+    }
     if request.method == "POST":
+        # Получаем данные из формы
         first_name = request.POST.get("first_name")
         username = request.POST.get("username")
         birth_date = request.POST.get("birth_date")
-        category = request.POST.get("category")
-        
-        # Проверка на уникальность имени пользователя
+        new_password = request.POST.get("new_password")
+        confirm_password = request.POST.get("confirm_password")
+
+        # Проверяем уникальность имени пользователя
         if User.objects.filter(username=username).exclude(id=request.user.id).exists():
             messages.error(request, "Имя пользователя уже занято.")
         else:
-            # Обновление данных пользователя
+            # Обновляем данные пользователя
             request.user.first_name = first_name
             request.user.username = username
             request.user.save()
 
-            # Обновление данных профиля
-            print(
-                'birth_date', user_profile.birth_date,
-            )
-            # user_profile.birth_date = birth_date
-            user_profile.birth_date = datetime.strptime(birth_date, "%Y-%m-%d").date()
-            user_profile.category = category
+            # Обновляем данные профиля
+            if birth_date:
+                user_profile.birth_date = datetime.strptime(birth_date, "%Y-%m-%d").date()
             user_profile.save()
 
-            messages.success(request, "Профиль успешно обновлен.")
-            return redirect("update_user")
+            # Если пользователь ввёл новый пароль
+            if new_password or confirm_password:
+                if new_password == confirm_password:
+                    request.user.password = make_password(new_password)
+                    request.user.save()
+                    messages.success(request, "Пароль успешно изменён.")
+                else:
+                    messages.error(request, "Пароли не совпадают.")
+
+            messages.success(request, "Профиль успешно обновлён.")
+            return render(request, "update_user.html", context)
 
     context = {
         "user_profile": user_profile,

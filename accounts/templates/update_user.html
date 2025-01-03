@@ -70,6 +70,25 @@
                     <option value="business" {% if user_profile.category == 'business' %}selected{% endif %}>Бизнес</option>
                 </select>
             </div>
+            <!-- Поля для изменения пароля -->
+            <div class="mb-3">
+                <input
+                    type="password"
+                    name="new_password"
+                    class="form-control"
+                    placeholder="Новый пароль"
+                    style="background-color: #f8f9fa; border-radius: 15px;"
+                >
+            </div>
+            <div class="mb-3">
+                <input
+                    type="password"
+                    name="confirm_password"
+                    class="form-control"
+                    placeholder="Подтвердите новый пароль"
+                    style="background-color: #f8f9fa; border-radius: 15px;"
+                >
+            </div>
             <button
                 type="submit"
                 class="btn btn-primary w-100"
