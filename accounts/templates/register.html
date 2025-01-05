@@ -54,8 +54,10 @@
                 >
             </div>
             <div class="mb-3">
+                <label for="category" class="form-label">Категория</label>
                 <select
                     name="category"
+                    id="category"
                     class="form-select"
                     style="background-color: #f8f9fa; border-radius: 15px;"
                     required
@@ -67,7 +69,12 @@
                     <option value="it">IT</option>
                     <option value="business">Бизнес</option>
                 </select>
+                <!-- Пояснительная надпись -->
+                <small class="form-text text-muted mt-1">
+                    От категории будут зависеть ваши дальнейшие задания.
+                </small>
             </div>
+            
             <div class="mb-3">
                 <input
                     type="password"
