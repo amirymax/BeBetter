@@ -10,4 +10,7 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('update_user/', update_user, name='update_user'),
     path('task/', task_view, name='task'),
+    path('privacy_policy/',privacy_policy, name='privacy_policy'),
+    path('delete_account/', delete_account, name='delete_account'),
+    path('terms/', terms_and_conditions, name='terms'),
 ]
