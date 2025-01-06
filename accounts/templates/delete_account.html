@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление аккаунта - BeBetter{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px; border-radius: 25px;">
+        <!-- Заголовок -->
+        <h2 class="text-center mb-4" style="font-family: 'Cursive', sans-serif; font-weight: bold;">Удаление аккаунта</h2>
+        
+        <!-- Сообщения -->
+        {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Форма -->
+        <form method="post" action="{% url 'delete_account' %}">
+            {% csrf_token %}
+            <p class="text-center mb-3">Введите ваш пароль, чтобы подтвердить удаление аккаунта. Это действие необратимо.</p>
+            <div class="mb-3">
+                <input
+                    type="password"
+                    name="password"
+                    class="form-control"
+                    placeholder="Введите пароль"
+                    style="background-color: #f8f9fa; border-radius: 15px;"
+                    required
+                >
+            </div>
+            <button
+                type="submit"
+                class="btn btn-danger w-100"
+                style="border-radius: 15px; font-weight: bold;"
+            >
+                Удалить аккаунт
+            </button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="{% url 'update_user' %}" class="btn btn-secondary" style="border-radius: 15px;">Отмена</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

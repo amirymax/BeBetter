@@ -197,3 +197,25 @@ def task_view(request):
     else:
         # Пользователь не вошел
         return render(request, "welcome.html")
+
+    
+def privacy_policy(request):
+    return render(request, "privacy_policy.html")
+
+def terms_and_conditions(request):
+    return render(request, "terms_of_use.html")
+
+@login_required
+def delete_account(request):
+    if request.method == "POST":
+        password = request.POST.get("password")
+        user = request.user
+        
+        if user.check_password(password):  # Проверяем введённый пароль
+            user.delete()  # Удаляем пользователя
+            messages.success(request, "Ваш аккаунт был успешно удалён.")
+            return redirect("home")  # Перенаправляем на главную страницу
+        else:
+            messages.error(request, "Неверный пароль. Попробуйте снова.")
+    
+    return render(request, "delete_account.html")
