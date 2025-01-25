@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль пользователя - {{ user_profile.user.username }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Профиль пользователя: {{ user_profile.user.username }}</h1>
+
+    <p><strong>Имя:</strong> {{ user_profile.user.first_name }}</p>
+    <p><strong>Дата рождения:</strong> {{ user_profile.birth_date }}</p>
+    <p><strong>Уровень:</strong> {{ user_profile.level }}.{{ user_profile.current_task_number }}</p>
+    <p><strong>Завершённые задачи:</strong> {{ user_profile.completed_tasks }}</p>
+    <p><strong>Категория:</strong> {{ user_profile.get_category_display }}</p>
+
+    <a href="{% url 'rankings' %}" class="btn btn-primary">Назад к рейтингу</a>
+</div>
+{% endblock %}

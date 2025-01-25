@@ -39,10 +39,12 @@
                         <a class="nav-link" href="/about/">О нас</a>
                     </li>
                 </ul>
+
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     {% if user.is_authenticated %}
+                        <!-- Кнопка Профиля -->
                         <li class="nav-item">
-                            <a href="{% url 'update_user' %}" class="nav-link">Редактировать аккаунт</a>
+                            <a href="{% url 'profile' %}" class="nav-link">Профиль</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/logout/">Выход</a>
@@ -56,6 +58,9 @@
                         </li>
                     {% endif %}
                 </ul>
+
+                
+                
             </div>
         </div>
     </nav>
