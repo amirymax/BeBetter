@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
 from django.contrib.auth.hashers import make_password
+
 CATEGORIES = {
         'science': 'Наука',
         'art': 'Искусство',
@@ -219,3 +220,21 @@ def delete_account(request):
             messages.error(request, "Неверный пароль. Попробуйте снова.")
     
     return render(request, "delete_account.html")
+
+def user_detail(request, id):
+    user_profile = get_object_or_404(UserProfile, user__id=id)
+    
+    context = {
+        'user_profile': user_profile,
+    }
+    return render(request, 'user_detail.html', context)
+
+@login_required
+def profile(request):
+    user_profile = request.user.userprofile  # Полученеие профиль текушего пользователя
+    
+    context = {
+        'user_profile': user_profile,
+        'user': request.user  # выводим информатсию о пользователе
+    }
+    return render(request, 'profile.html', context)

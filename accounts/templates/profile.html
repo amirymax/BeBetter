@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Профиль - BeBetter{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Профиль пользователя</h1>
+    
+    <div class="card">
+        <div class="card-header">
+            <h5>Информация о пользователе</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Имя:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+            <p><strong>Дата рождения:</strong> {{ user.userprofile.birth_date }}</p>
+            <p><strong>Категория:</strong> {{ user.userprofile.category }}</p>
+        </div>
+    </div>
+
+    <div class="mt-3 text-center">
+        <!--   кнопка  редактирование   -->
+        <a href="{% url 'update_user' %}" class="btn btn-primary">Редактировать</a>
+    </div>
+</div>
+{% endblock %}

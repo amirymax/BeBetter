@@ -24,7 +24,7 @@
                 {% for player in page_obj %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td>{{ player.user.username }}</td>
+                    <td><a href="{% url 'user_detail' player.user.id %}">{{ player.user.username }}</a></td>
                     <td>{{ player.level }}.{{ player.current_task_number }}</td>
                     <td>{{ player.completed_tasks }}</td>
                 </tr>
