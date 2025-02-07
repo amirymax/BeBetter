@@ -77,22 +77,18 @@
     <footer class="bg-dark text-white text-center text-lg-start mt-4">
         <div class="container p-4">
             <div class="row">
-                <!-- О проекте -->
-                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-uppercase">О нас</h5>
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                            <a href="/about/" class="text-white" style="text-decoration: none;">О проекте</a>
-                        </li>
-                        <li>
-                            <a href="{% url 'privacy_policy' %}" class="text-white" style="text-decoration: none;">Политика конфиденциальности</a>
-                        </li>
-                        <li>
-                            <a href="/terms/" class="text-white" style="text-decoration: none;">Условия использования</a>
-                        </li>
-                    </ul>
+                
+                <!-- Социальные сети -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
+                    <h5 class="text-uppercase">Следите за нами</h5>
+                    <a href="https://www.instagram.com/amirilifee" class="text-white me-3", target="_blank">
+                        <i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/amirymax" class="text-white me-3", target="_blank">
+                        <i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://t.me/amirilifee" class="text-white", target="_blank">
+                        <i class="fa-brands fa-telegram"></i></a>
                 </div>
-    
+
                 <!-- Контакты -->
                 <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                     <h5 class="text-uppercase">Контакты</h5>
@@ -103,22 +99,27 @@
                     </ul>
                 </div>
     
-                <!-- Социальные сети -->
-                <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-center">
-                    <h5 class="text-uppercase">Следите за нами</h5>
-                    <a href="https://www.instagram.com/amirilifee" class="text-white me-3", target="_blank">
-                        <i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com" class="text-white me-3", target="_blank">
-                        <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/amirymax/BeBetter" class="text-white", target="_blank">
-                        <i class="fa-brands fa-github"></i></a>
+
+
+                <!-- О проекте -->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <a href="/about/" class="btn btn-primary mb-3">Что за проект? Нажми и узнай!</a>
+                    <ul class="list-unstyled mb-0">
+                        <li style="display: inline; margin-right: 10px;">
+                            <a href="/privacy_policy/" class="text-secondary" style="text-decoration: none; font-style: italic;">Конфиденциальность</a>
+                        </li>
+                        <li style="display: inline;">
+                            <a href="/terms/" class="text-secondary" style="text-decoration: none; font-style: italic;">Условия</a>
+                        </li>
+                    </ul>
                 </div>
+
             </div>
         </div>
     
         <!-- Низ футера -->
         <div class="text-center p-3 bg-secondary">
-            © 2024 BeBetter. Все права защищены.
+             2024-2025 © BeBetter. Все права защищены.
         </div>
     </footer>
     
