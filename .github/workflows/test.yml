@@ -1,0 +1,30 @@
+name: Django Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout репозитория
+        uses: actions/checkout@v4
+
+      - name: Установка Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Установка зависимостей
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-django
+
+      - name: Настройка базы данных (SQLite)
+        run: |
+          python manage.py makemigrations
+          python manage.py migrate
+
+      - name: Запуск тестов
+        run: pytest --disable-warnings

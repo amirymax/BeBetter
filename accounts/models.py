@@ -25,6 +25,9 @@ class UserProfile(models.Model):
         """Обновление номера текущего задания."""
         self.current_task_number = self.completed_tasks + 1
         self.save()
+    
+    class Meta:
+        app_label = 'accounts'
 
 class Level(models.Model):
     LEVEL_TYPES = [
