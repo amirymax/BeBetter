@@ -13,7 +13,6 @@ urlpatterns = [
     path('privacy_policy/',privacy_policy, name='privacy_policy'),
     path('delete_account/', delete_account, name='delete_account'),
     path('terms/', terms_and_conditions, name='terms'),
-
     path('user/<int:id>/', user_detail, name='user_detail'),
     path('profile/', profile, name='profile'),
 ]

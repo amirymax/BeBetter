@@ -3,31 +3,50 @@
 {% block title %}Главная - BeBetter{% endblock %}
 
 {% block content %}
-<div class="container mt-5 d-flex flex-column-reverse flex-lg-row align-items-center justify-content-between">
-    <!-- Левая часть: Скриншоты -->
-    <div class="w-100 w-lg-50 text-center mt-4 mt-lg-0 order-lg-2">
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 200px; margin: 0 auto;">
-            <div class="carousel-inner iphone-frame">
-                <div class="carousel-item active">
-                    <img src="{% static 'images/main_mobile.jpg' %}" class="d-block w-100" alt="Главная страница">
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/ranking_mobile.jpg' %}" class="d-block w-100" alt="Рейтинг">
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/contact_mobile.jpg' %}" class="d-block w-100" alt="Контакты">
-                </div>
+<div class="container mt-5 text-center">
+    <!-- Заголовок и кнопки -->
+    <div class="mt-5 d-flex justify-content-center shadow-lg" style="border-radius: 10px; padding: 20px; width: 100%; margin-left: auto; margin-right: auto; background-image: linear-gradient(to bottom right, #ADD8E6, #8BC34A);">
+        <div class="text-center">
+            <h1 style="font-weight: bold; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);">Добро пожаловать в BeBetter!</h1>
+            <p style="font-size: 1.1em; font-weight: bold; margin-bottom: 20px; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);">
+                Ваш путь к совершенству начинается здесь.
+            </p>
+            <div>
+                <a href="/login/" class="btn btn-outline-primary btn-lg mx-2" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);">Войти</a>
+                <a href="/register/" class="btn btn-primary btn-lg mx-2">Регистрация</a>
             </div>
         </div>
     </div>
+    
+    
 
-    <!-- Правая часть: Приветствие -->
-    <div class="w-100 w-lg-50 text-center order-lg-1">
-        <h1 class="mb-4">Добро пожаловать в BeBetter!</h1>
-        <p class="mb-4">Ваш путь к совершенству начинается здесь.</p>
-        <div>
-            <a href="/login/" class="btn btn-primary btn-lg mx-2">Войти</a>
-            <a href="/register/" class="btn btn-outline-primary btn-lg mx-2">Регистрация</a>
+    <!-- Мотивационный текст -->
+    <div class="mt-5 text-start shadow-lg" style="border-radius: 10px; padding: 15px; max-width: 600px; margin-left: 10px; margin-right: auto; background-color: #f0f9f5;">
+        <h3 style="font-weight: bold;">Готов ли ты стать лучше?</h3>
+        <p style="font-size: 1.1em; line-height: 1.5em;">- Ты когда-нибудь задумывался, насколько велик твой потенциал?<br>- Что мешает тебе стать лучше уже сегодня?<br> <i>Достаточно одного <b>шага</b>, чтобы начать путь к саморазвитию.</i></p>
+    </div>
+    
+    <!-- О проекте -->
+    <div class="mt-5 text-start shadow-lg" style="border-radius: 10px; padding: 15px; max-width: 600px; margin-left: auto; margin-right: 10px; background-color: #f0f9f5;">
+        <h3 style="font-weight: bold;">Что за BeBetter?</h3>
+        <p style="font-size: 1.1em; line-height: 1.5em;"><b>BeBetter</b> — это платформа, которая помогает людям достигать новых высот в саморазвитии. Мы даём тебе задачи, отслеживаем твой прогресс и помогаем становиться лучше день за днём.</p>
+    </div>
+
+    <!-- Параллельное развитие -->
+    <div class="mt-5 text-center shadow-lg" style="border-radius: 10px; padding: 15px; max-width: 600px; margin-left: auto; margin-right: auto; background-color: #8BC34A;">
+        <h3 style="font-weight: bold; font-size: 1.5em; color: #fff; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);">Развивай свой мозг & тело  <i>паралельно</i></h3>
+    </div>
+    
+    
+    <!-- Ещё мотивации и повторение кнопок -->
+    <div class="mt-5 d-flex justify-content-center shadow-lg" style="border-radius: 10px; padding: 20px; max-width: 800px; margin-left: auto; margin-right: auto; background-image: linear-gradient(to bottom right, #ADD8E6, #8BC34A);">
+        <div class="text-center">
+            <h3 style="font-weight: bold; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);">Начни сейчас!</h3>
+            <p style="font-size: 1.1em; line-height: 1.5em; text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);">Каждое достижение начинается с первого шага. Сделай его сегодня!</p>
+            <div>
+                <a href="/login/" class="btn btn-outline-primary btn-lg mx-2" style="text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);">Войти</a>
+                <a href="/register/" class="btn btn-primary btn-lg mx-2">Регистрация</a>
+            </div>
         </div>
     </div>
 </div>

@@ -4,6 +4,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Адаптивные стили для мобильных устройств */
 @media (max-width: 768px) {
     #carouselExampleFade {
