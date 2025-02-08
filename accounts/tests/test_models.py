@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth.models import User
 from accounts.models import UserProfile, Level, Category, Task, CompletedTask
-
+# coment для тест
 @pytest.mark.django_db
 def test_user_profile_creation():
     user = User.objects.create_user(username='testuser', password='testpass123')

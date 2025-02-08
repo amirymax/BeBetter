@@ -20,7 +20,6 @@ def test_login_view(client: Client):
     assert 'Вход' in response.content.decode()
 
 
-# test logout
 @pytest.mark.django_db
 def test_logout_view(client: Client):
     user = User.objects.create_user(username='testuser', password='testpass123')
